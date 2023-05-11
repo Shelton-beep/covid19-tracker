@@ -1,11 +1,15 @@
 <template>
   <main v-if="!loading">
     <DataTitle :text="title" :dataDate="dataDate"/>
+    
+    <DataBoxes :stats="stats" />
+
+    <CountrySelect :countries="countries" />
   </main>
 
   <main v-else class="flex flex-col align-center text-center justify-center">
     <div class="text-gray-500 text-3xl mt-10 mb-6">
-      Fetching Data
+      Fetching Data...
     </div>
     <img :src="loadingImage" class="w-24 m-auto" alt="">
   </main>
@@ -13,11 +17,15 @@
 
 <script>
 import DataTitle from '@/components/DataTitle.vue'
+import DataBoxes from '@/components/DataBoxes.vue'
+import CountrySelect from '@/components/CountrySelect.vue'
 
 export default {
   name:'HomeView',
   components:{
-    DataTitle
+    DataTitle,
+    DataBoxes,
+    CountrySelect
   },
   data(){
     return {
